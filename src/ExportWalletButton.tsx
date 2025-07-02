@@ -64,7 +64,7 @@ export function ExportWalletButton() {
                     Log in
                 </button>
             )}
-            {!isAuthenticated && (
+            {isAuthenticated && (
                 <button
                     onClick={handleExport}
                     disabled={!isAuthenticated || !embeddedWallet}
