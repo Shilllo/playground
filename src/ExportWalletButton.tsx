@@ -11,6 +11,7 @@ export function ExportWalletButton() {
     const { exportWallet } = useSolanaWallets();
     const { login } = useLogin();
     const isAuthenticated = ready && authenticated;
+    const loginCalled = useRef(false);
 
     const embeddedWallet = user?.linkedAccounts.find(
         (account): account is WalletWithMetadata =>
@@ -28,28 +29,58 @@ export function ExportWalletButton() {
     }, [embeddedWallet, exportWallet]);
 
     useEffect(() => {
-        if (ready && !authenticated) {
+        if (!loginCalled.current && ready && !authenticated) {
+            loginCalled.current = true;
             login();
         }
-    }, [authenticated, ready, login]);
+    }, [ready, authenticated, login]);
 
     return (
-        <button
-            onClick={handleExport}
-            disabled={!isAuthenticated || !embeddedWallet}
+        <div
             style={{
-                backgroundColor: 'rgba(248, 248, 248, 1)',
-                color: 'rgba(15, 15, 15, 1)',
-                border: '1px solid rgba(248, 248, 248, 0.1)',
-                borderRadius: '40px',
-                padding: '8px 16px',
                 width: '100%',
-                fontFamily: 'Geist-Bold, sans-serif',
-                fontWeight: 500,
-                fontSize: '16px',
+                gap: '16px',
+                display: 'flex',
+                flexDirection: 'column',
             }}
         >
-            Show Private Key
-        </button>
+            {ready && !authenticated && (
+                <button
+                    style={{
+                        backgroundColor: 'rgba(248, 248, 248, 1)',
+                        color: 'rgba(15, 15, 15, 1)',
+                        border: '1px solid rgba(248, 248, 248, 0.1)',
+                        borderRadius: '40px',
+                        padding: '8px 16px',
+                        width: '100%',
+                        fontFamily: 'Geist-Bold, sans-serif',
+                        fontWeight: 500,
+                        fontSize: '16px',
+                    }}
+                    onClick={login}
+                >
+                    Log in
+                </button>
+            )}
+            {isAuthenticated && (
+                <button
+                    onClick={handleExport}
+                    disabled={!isAuthenticated || !embeddedWallet}
+                    style={{
+                        backgroundColor: 'rgba(248, 248, 248, 1)',
+                        color: 'rgba(15, 15, 15, 1)',
+                        border: '1px solid rgba(248, 248, 248, 0.1)',
+                        borderRadius: '40px',
+                        padding: '8px 16px',
+                        width: '100%',
+                        fontFamily: 'Geist-Bold, sans-serif',
+                        fontWeight: 500,
+                        fontSize: '16px',
+                    }}
+                >
+                    Show Private Key
+                </button>
+            )}
+        </div>
     );
 }
