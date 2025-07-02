@@ -2,3 +2,8 @@ body {
     margin: 0;
     background-color: rgba(26, 26, 26, 1);
 }
+
+html,
+#root {
+    background-color: rgba(26, 26, 26, 1);
+}
