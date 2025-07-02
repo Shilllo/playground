@@ -42,6 +42,8 @@ export function ExportWalletButton() {
                 gap: '16px',
                 display: 'flex',
                 flexDirection: 'column',
+                marginTop: 'auto',
+                marginBottom: '16px',
             }}
         >
             {ready && !authenticated && (
@@ -51,7 +53,7 @@ export function ExportWalletButton() {
                         color: 'rgba(15, 15, 15, 1)',
                         border: '1px solid rgba(248, 248, 248, 0.1)',
                         borderRadius: '40px',
-                        padding: '8px 16px',
+                        padding: '12px 16px',
                         width: '100%',
                         fontFamily: 'Geist-Bold, sans-serif',
                         fontWeight: 500,
@@ -62,7 +64,7 @@ export function ExportWalletButton() {
                     Log in
                 </button>
             )}
-            {isAuthenticated && (
+            {!isAuthenticated && (
                 <button
                     onClick={handleExport}
                     disabled={!isAuthenticated || !embeddedWallet}
@@ -71,7 +73,7 @@ export function ExportWalletButton() {
                         color: 'rgba(15, 15, 15, 1)',
                         border: '1px solid rgba(248, 248, 248, 0.1)',
                         borderRadius: '40px',
-                        padding: '8px 16px',
+                        padding: '12px 16px',
                         width: '100%',
                         fontFamily: 'Geist-Bold, sans-serif',
                         fontWeight: 500,
