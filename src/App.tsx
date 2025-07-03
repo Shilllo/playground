@@ -9,8 +9,6 @@ function App() {
                 display: 'flex',
                 justifyContent: 'center',
                 alignItems: 'center',
-                paddingRight: '16px',
-                paddingLeft: '16px',
             }}
         >
             <ExportWalletButton />

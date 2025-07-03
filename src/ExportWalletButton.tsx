@@ -7,7 +7,7 @@ import { useSolanaWallets } from '@privy-io/react-auth/solana';
 import { useCallback, useEffect, useRef } from 'react';
 
 export function ExportWalletButton() {
-    const { ready, authenticated, user } = usePrivy();
+    const { ready, authenticated, user, logout } = usePrivy();
     const { exportWallet } = useSolanaWallets();
     const { login } = useLogin();
     const isAuthenticated = ready && authenticated;
@@ -34,6 +34,18 @@ export function ExportWalletButton() {
             login();
         }
     }, [ready, authenticated, login]);
+
+    useEffect(() => {
+        const handleBeforeUnload = () => {
+            logout();
+        };
+
+        window.addEventListener('beforeunload', handleBeforeUnload);
+
+        return () => {
+            window.removeEventListener('beforeunload', handleBeforeUnload);
+        };
+    }, [logout]);
 
     return (
         <div
