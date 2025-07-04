@@ -5,7 +5,7 @@ import {
 } from '@privy-io/react-auth';
 import { useSolanaWallets } from '@privy-io/react-auth/solana';
 import { useCallback, useEffect, useState } from 'react';
-import { UserAvatar } from './userAvatar';
+import { UserAvatar } from './UserAvatar.tsx';
 
 export interface IUser {
     username?: string;
@@ -47,7 +47,7 @@ export function ExportWalletButton() {
             (async () => {
                 const token = await getAccessToken();
                 const res = await fetch(
-                    'http://api-gateway.staging.mywewe.click/api/users/me/profile',
+                    'https://api-gateway.staging.mywewe.click/api/users/me/profile',
                     {
                         method: 'GET',
                         headers: {
@@ -110,7 +110,7 @@ export function ExportWalletButton() {
                     </div>
                     <div
                         style={{
-                            fontFamily: 'Roboto-bold, sans-serif',
+                            fontFamily: 'Geist-bold, sans-serif',
                             color: '#F8F8F8',
                             letterSpacing: '-0.03em',
                             fontSize: '24px',
@@ -145,6 +145,7 @@ export function ExportWalletButton() {
                         fontFamily: 'Geist-Bold, sans-serif',
                         fontWeight: 500,
                         fontSize: '16px',
+                        marginBottom: '12px',
                     }}
                     onClick={login}
                 >
@@ -158,7 +159,7 @@ export function ExportWalletButton() {
                         flexDirection: 'column',
                         width: '100%',
                         height: '100%',
-                        gap: '12px',
+                        gap: '35px',
                     }}
                 >
                     <div

@@ -44,6 +44,11 @@ export const UserAvatar = ({ userData }: { userData?: IUser | null }) => {
             return makeBlockie(walletAddress);
         }
     }, [walletAddress]);
+
+    const imageSource = useMemo(() => {
+        return userData?.avatarUrl || blockieAvatar;
+    }, [blockieAvatar, userData]);
+
     return (
         <div
             style={{
@@ -63,22 +68,19 @@ export const UserAvatar = ({ userData }: { userData?: IUser | null }) => {
                     height: '75px',
                 }}
             >
-                <img
-                    src={userData?.avatarUrl || blockieAvatar}
-                    alt="warning"
-                    width={75}
-                    height={75}
-                />
+                <img src={imageSource} alt="warning" width={75} height={75} />
             </div>
 
-            <div
-                style={{
-                    color: 'rgba(248, 248, 248, 1)',
-                    fontFamily: 'Geist-bold, sans-serif',
-                }}
-            >
-                {userData?.username}
-            </div>
+            {userData?.username && (
+                <div
+                    style={{
+                        color: 'rgba(248, 248, 248, 1)',
+                        fontFamily: 'Geist-bold, sans-serif',
+                    }}
+                >
+                    {userData?.username}
+                </div>
+            )}
 
             <div
                 style={{
