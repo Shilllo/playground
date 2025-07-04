@@ -14,7 +14,12 @@ createRoot(document.getElementById('root')!).render(
                 },
                 appearance: {
                     theme: 'dark',
+                    accentColor: '#CDFB52',
+                    logo: './src/assets/splash-icon.png',
+                    loginMessage:
+                        'Log in with the same social sign-in used for connecting to WEWE.',
                 },
+                loginMethods: ['email', 'google', 'apple', 'twitter'],
             }}
         >
             <App />

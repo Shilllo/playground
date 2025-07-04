@@ -1,4 +1,4 @@
-import { ExportWalletButton } from './ExportWalletButton.tsx';
+import { ExportWalletButton } from './components/ExportWalletButton.tsx';
 
 function App() {
     return (

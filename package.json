@@ -15,6 +15,7 @@
         "@solana/spl-token": "^0.4.13",
         "@solana/web3.js": "^1.98.2",
         "buffer": "^6.0.3",
+        "ethereum-blockies-base64": "^1.0.2",
         "react": "^19.1.0",
         "react-cookie": "^8.0.1",
         "react-dom": "^19.1.0",
