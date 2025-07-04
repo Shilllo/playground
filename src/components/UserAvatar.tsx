@@ -2,34 +2,8 @@ import { useSolanaWallets } from '@privy-io/react-auth';
 import makeBlockie from 'ethereum-blockies-base64';
 import { useMemo } from 'react';
 
-export interface IUser {
-    username?: string;
-    bio?: string | null;
-    avatarUrl?: string | null;
-    createdDate?: string;
-    socialLinks?: {
-        twitter?: string | null;
-        instagram?: string | null;
-        youtube?: string | null;
-        tiktok?: string | null;
-    };
-}
-
-function truncateAddress(
-    address: string | undefined,
-    startLength: number = 4,
-    endLength: number = 4,
-): string | undefined {
-    if (!address) return;
-    if (address.length <= startLength + endLength) {
-        return address;
-    }
-
-    const start = address.slice(0, startLength);
-    const end = address.slice(-endLength);
-
-    return `${start}...${end}`;
-}
+import { truncateAddress } from '../utils/truncateAddress';
+import type { IUser } from '../types/user';
 
 export const UserAvatar = ({ userData }: { userData?: IUser | null }) => {
     const { wallets } = useSolanaWallets();

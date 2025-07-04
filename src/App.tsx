@@ -1,4 +1,4 @@
-import { ExportWalletButton } from './components/ExportWalletButton.tsx';
+import { ExportWallet } from './components/ExportWallet.tsx';
 
 function App() {
     return (
@@ -11,7 +11,7 @@ function App() {
                 alignItems: 'center',
             }}
         >
-            <ExportWalletButton />
+            <ExportWallet />
         </div>
     );
 }
