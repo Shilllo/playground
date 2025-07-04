@@ -232,7 +232,7 @@ export function ExportWalletButton() {
                                 fontSize: '16px',
                             }}
                         >
-                            Show Privy Wallet
+                            Export Privy Wallet
                         </button>
                         <button
                             onClick={logout}
@@ -249,7 +249,7 @@ export function ExportWalletButton() {
                                 fontSize: '16px',
                             }}
                         >
-                            Log out of Export Wallet{' '}
+                            Log out of Export Wallet
                         </button>
                     </div>
                 </div>

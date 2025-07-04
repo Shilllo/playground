@@ -3,6 +3,7 @@ import { createRoot } from 'react-dom/client';
 import App from './App.tsx';
 import { PrivyProvider } from '@privy-io/react-auth';
 import './index.css';
+import splashIcon from './assets/splash-icon.png';
 
 createRoot(document.getElementById('root')!).render(
     <StrictMode>
@@ -15,7 +16,7 @@ createRoot(document.getElementById('root')!).render(
                 appearance: {
                     theme: 'dark',
                     accentColor: '#CDFB52',
-                    logo: './src/assets/splash-icon.png',
+                    logo: splashIcon,
                     loginMessage:
                         'Log in with the same social sign-in used for connecting to WEWE.',
                 },
