@@ -4,12 +4,20 @@ import type { IUser } from '../types/user';
 import { UserAvatar } from './UserAvatar';
 import { WarningIcon } from './icons/WarningIcon';
 
+declare global {
+    interface Window {
+        ReactNativeWebView?: {
+            postMessage: (message: string) => void;
+        };
+    }
+}
+
 export const ExportWalletAuthenticatedView = ({
     handleExport,
 }: {
     handleExport: () => void;
 }) => {
-    const { getAccessToken, logout, ready, authenticated, user } = usePrivy();
+    const { getAccessToken, ready, authenticated, user, logout } = usePrivy();
     const [userData, setUserData] = useState<IUser | null>();
     const isAuthenticated = ready && authenticated;
 
@@ -39,6 +47,11 @@ export const ExportWalletAuthenticatedView = ({
             })();
         }
     }, [isAuthenticated, getAccessToken]);
+
+    const handleCloseWebView = () => {
+        logout();
+        window.ReactNativeWebView?.postMessage('close');
+    };
 
     return (
         <div
@@ -112,10 +125,10 @@ export const ExportWalletAuthenticatedView = ({
                     Export Privy Wallet
                 </button>
                 <button
-                    onClick={logout}
+                    onClick={handleCloseWebView}
                     disabled={!isAuthenticated || !embeddedWallet}
                     style={{
-                        backgroundColor: 'rgba(15, 15, 15, 1)',
+                        backgroundColor: 'transparent',
                         color: 'rgba(248, 248, 248, 1)',
                         border: '1px solid rgba(248, 248, 248, 0.1)',
                         borderRadius: '40px',

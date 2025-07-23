@@ -50,7 +50,7 @@ export const ExportWalletUnauthenticatedView = () => {
                     style={{
                         color: '#F8F8F8A3',
                         fontSize: '16px',
-                        width: '80%',
+                        width: '100%',
                         textAlign: 'center',
                         lineHeight: '1.6',
                     }}
